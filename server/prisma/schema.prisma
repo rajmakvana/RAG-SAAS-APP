@@ -1,0 +1,27 @@
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  username  String
+  email     String   @unique
+  password  String
+  avatarUrl String?  @default("https://avatar.iran.liara.run/public/11")
+  role      Role     @default(USER) 
+  createdAt DateTime @default(now())
+  walletBalance Int @default(0)
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
