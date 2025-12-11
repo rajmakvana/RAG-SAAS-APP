@@ -17,7 +17,6 @@ model User {
   avatarUrl String?  @default("https://avatar.iran.liara.run/public/11")
   role      Role     @default(USER) 
   createdAt DateTime @default(now())
-  walletBalance Int @default(0)
 }
 
 enum Role {
