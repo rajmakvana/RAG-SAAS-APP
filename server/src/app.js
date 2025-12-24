@@ -10,7 +10,7 @@ app.use(cors());
 
 // all apis routes 
 app.use("/api/v1/user" , userAuthRouter);
-app.use("/api/v1/protected" , protectedRouter);
+app.use("/api/v1/protected" , protectedRouter); // admin can file upload 
 
 
 

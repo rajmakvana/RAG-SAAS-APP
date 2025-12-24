@@ -12,10 +12,4 @@ router.post("/register", registerValidation , register);
 // Login
 router.post("/login", loginValidation, login);
 
-// admin protected route example
-router.get( "/admin-dashboard" , authMiddleware , roleMiddleware(['ADMIN']) , adminProtectedRoute);
-
-// admin protected route example
-router.get( "/user-dashboard" , authMiddleware , roleMiddleware(['ADMIN' , 'USER']) , userProtectedRoute);
-
 export default router;

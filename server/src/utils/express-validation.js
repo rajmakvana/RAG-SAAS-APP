@@ -15,3 +15,12 @@ export const loginValidation = [
   body("password").notEmpty().withMessage("Password is required"),
 ];
 
+// upload file validation 
+
+export const uploadFileValidation = (req , res , next) =>{
+    if(!req.file){
+        return res.status(400).json({ errors: [{ msg: "File is required" }] }); 
+    }
+    next();
+}
+
