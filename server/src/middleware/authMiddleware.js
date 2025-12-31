@@ -13,7 +13,7 @@ export const authMiddleware = (req, res, next) => {
         next();
 
     }catch(err){
-        console.error("Auth middleware error:", error.message);
+        console.error("Auth middleware error:", err.message);
         return res.status(401).json({ message: "Invalid or expired token" });
     }
 }
