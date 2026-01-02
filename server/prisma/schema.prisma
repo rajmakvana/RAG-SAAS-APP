@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
   output   = "../generated/prisma"
@@ -15,7 +14,7 @@ model User {
   email     String   @unique
   password  String
   avatarUrl String?  @default("https://avatar.iran.liara.run/public/11")
-  role      Role     @default(USER) 
+  role      Role     @default(USER)
   createdAt DateTime @default(now())
 }
 
@@ -25,14 +24,37 @@ enum Role {
 }
 
 model Dataset {
-  id             String   @id @default(uuid())
-  filename       String
-  url            String
-  publicId       String
-  uploadedById   String?        // FK to User.id (optional)
-  createdAt      DateTime @default(now())
+  id           String   @id @default(uuid())
+  filename     String
+  url          String
+  publicId     String
+  uploadedById String? // FK to User.id (optional)
+  createdAt    DateTime @default(now())
 
   // optional relation if you have User model:
   // uploadedBy   User?  @relation(fields: [uploadedById], references: [id])
+}
+
+enum MessageRole {
+  USER
+  ASSISTANT
+}
+
+model Thread {
+  id        String    @unique
+  title     String
+  messages  Message[]
+  userId    String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Message {
+  id        String       @id @default(uuid())
+  role      MessageRole
+  content   String
+  createdAt DateTime     @default(now())
+  threadId  String
+  thread    Thread       @relation(fields: [threadId], references: [id], onDelete: Cascade)
 }
 
