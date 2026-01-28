@@ -1,4 +1,4 @@
-# 🚀 RAG SaaS Application
+# 🚀 RAG Chat Application
 
 A **Retrieval-Augmented Generation (RAG) SaaS backend** that allows users (schools, small companies, organizations) to upload documents and interact with them using an intelligent chatbot.  
 The system dynamically decides whether to use **internal documents** or **web search** to answer user queries.
